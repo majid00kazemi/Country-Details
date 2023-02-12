@@ -16,38 +16,32 @@ function CreateCard({ list }) {
 
   return countries ? (
     <section className="row container m-auto">
-      <section className="d-flex justify-content-evenly flex-wrap col-md-12">
-        {countries.map((country) => {
+      <ul className="d-flex justify-content-evenly flex-wrap col-md-12">
+        {countries.map((country, index) => {
           return (
-            <Card style={{ width: "18rem", marginBottom: "34px" }}>
-              {console.log(country)}
-              <Card.Img variant="top" src={country.flags.svg} />
-              <Card.Body>
-                <Card.Title>{country.name.common}</Card.Title>
-                <Card.Text>
-                  Population: {country.population}
-                  <br />
-                  Region: {country.region}
-                  <br />
-                  Capital: {country.capital}
-                </Card.Text>
-              </Card.Body>
-            </Card>
+            <li key={index}>
+              <Card style={{ width: "20rem", marginBottom: "34px" }}>
+                <Card.Img
+                  variant="top"
+                  src={country.flags.svg}
+                  alt={country.flags.alt}
+                />
+                <Card.Body>
+                  <Card.Title>{country.name.common}</Card.Title>
+                  <Card.Text>
+                    Population: {country.population}
+                    <br />
+                    Region: {country.region}
+                    <br />
+                    Capital: {country.capital}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </li>
           );
         })}
-      </section>
+      </ul>
     </section>
   ) : null;
-  // <Card style={{ width: "18rem" }}>
-  //   <Card.Img variant="top" src="holder.js/100px180" />
-  //   <Card.Body>
-  //     <Card.Title>Card Title</Card.Title>
-  //     <Card.Text>
-  //       Some quick example text to build on the card title and make up the
-  //       bulk of the card's content.
-  //     </Card.Text>
-  //     <Button variant="primary">Go somewhere</Button>
-  //   </Card.Body>
-  // </Card>
 }
 export default CreateCard;

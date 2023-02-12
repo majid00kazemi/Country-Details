@@ -50,3 +50,12 @@ button {
   border: none;
   transition: none;
 }
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+ul {
+  list-style: noen;
+  list-style-type: none;
+}
