@@ -35,7 +35,7 @@ function App() {
       localStorage.setItem("theme", isDarkTheme ? "light" : "dark");
       document.documentElement.setAttribute(
         "data-theme",
-        isDarkTheme ? "light" : "dark"
+        current === "light" ? "dark" : "light"
       );
       return current === "light" ? "dark" : "light";
     });
