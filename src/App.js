@@ -43,7 +43,7 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className="App" id={theme} data-theme={theme}>
+      <div className="App">
         <NavbarM
           toggleTheme={toggleTheme}
           isDarkTheme={isDarkTheme}
