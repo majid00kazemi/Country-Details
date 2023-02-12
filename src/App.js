@@ -8,24 +8,26 @@ function App() {
   const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
   const detectSystemTheme = () => {
     if (darkThemeMq.matches) {
-      document.documentElement.setAttribute("data-theme", "dark");
+      // document.documentElement.setAttribute("data-theme", "dark");
       return "dark";
     } else {
-      document.documentElement.setAttribute("data-theme", "light");
+      // document.documentElement.setAttribute("data-theme", "light");
       return "light";
     }
   };
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem("theme");
-    document.documentElement.setAttribute("data-theme", saved);
+    // document.documentElement.setAttribute("data-theme", saved);
     return saved || detectSystemTheme();
   });
   const isDarkTheme = theme === "dark";
 
   darkThemeMq.addListener((e) => {
     if (e.matches) {
+      document.documentElement.setAttribute("data-theme", "dark");
       setTheme("dark");
     } else {
+      document.documentElement.setAttribute("data-theme", "light");
       setTheme("light");
     }
   });
@@ -43,7 +45,7 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className="App">
+      <div className="App" data-theme={theme}>
         <NavbarM
           toggleTheme={toggleTheme}
           isDarkTheme={isDarkTheme}
