@@ -8,13 +8,16 @@ function App() {
   const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
   const detectSystemTheme = () => {
     if (darkThemeMq.matches) {
+      document.documentElement.setAttribute("data-theme", "dark");
       return "dark";
     } else {
+      document.documentElement.setAttribute("data-theme", "light");
       return "light";
     }
   };
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem("theme");
+    document.documentElement.setAttribute("data-theme", saved);
     return saved || detectSystemTheme();
   });
   const isDarkTheme = theme === "dark";
@@ -30,6 +33,10 @@ function App() {
   const toggleTheme = () => {
     setTheme((current) => {
       localStorage.setItem("theme", isDarkTheme ? "light" : "dark");
+      document.documentElement.setAttribute(
+        "data-theme",
+        isDarkTheme ? "light" : "dark"
+      );
       return current === "light" ? "dark" : "light";
     });
   };

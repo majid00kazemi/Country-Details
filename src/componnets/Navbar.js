@@ -8,8 +8,19 @@ function NavbarM({ toggleTheme, isDarkTheme, theme }) {
     toggleTheme();
   }
 
+  let prevScrollpos = window.pageYOffset;
+  window.onscroll = function () {
+    let currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+      document.querySelector(".navbar").style.top = "0";
+    } else {
+      document.querySelector(".navbar").style.top = "-100px";
+    }
+    prevScrollpos = currentScrollPos;
+  };
+
   return (
-    <Navbar>
+    <Navbar className="navbar fixed-top shadow">
       <Container className="navbar-container">
         <Navbar.Brand href="#">Where in the world?</Navbar.Brand>
         <Navbar.Toggle />
@@ -23,7 +34,12 @@ function NavbarM({ toggleTheme, isDarkTheme, theme }) {
                   <FontAwesomeIcon icon={faMoonReg} />
                 )}
               </i>
-              Dark Mode
+              {isDarkTheme ? (
+                  `Light Mode`
+                ) : (
+                  `Dark Mode`
+                )}
+              
             </Button>{" "}
           </Navbar.Text>
         </Navbar.Collapse>

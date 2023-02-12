@@ -1,20 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;800&display=swap");
+
+/* - Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
+- Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)
+- Very Dark Blue (Light Mode Text): hsl(200, 15%, 8%)
+- Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
+- Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
+- White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%) */
 
 :root {
-  --background: #ffffff;
-  --text-primary: #000;
-  --text-secondary: #8e05c2;
-  --accent: #8e05c2;
-  --border: #333;
-  --form-bg: #fff;
+  --background: hsl(0, 0%, 98%);
+  --element: hsl(0, 0%, 100%);
+  --text-primary: hsl(200, 15%, 8%);
+  --input: hsl(0, 0%, 52%);
 }
 
 [data-theme="dark"] {
-  --background: #000;
-  --text-primary: #fff;
-  --text-secondary: #8e05c2;
-  --accent: #8e05c2;
-  --border: #808080;
+  --background: hsl(207, 26%, 17%);
+  --element: hsl(209, 23%, 22%);
+  --text-primary: hsl(0, 0%, 100%);
   --form-bg: #191919;
 }
 
@@ -22,33 +25,32 @@
   transition: background-color 0.5s;
   font-family: "Nunito Sans", sans-serif;
 }
+body {
+  background-color: var(--background);
+}
+.main-section {
+  padding-top: 90px;
+  background-color: var(--background);
+}
 
-#light {
-  background-color: hsl(0, 0%, 98%);
+.navbar {
+  background-color: var(--element);
+  transition: 0.5s;
+  padding-bottom: 10px;
 }
-#dark {
-  background-color: hsl(210, 22%, 22%);
+.navbar button {
+  font-weight: 400;
 }
-
-#dark button {
-  background-color: hsl(210, 22%, 22%);
-  border: none;
-}
-#light .navbar a {
-  color: hsl(200, 15%, 8%);
+.navbar a {
+  color: var(--text-primary);
   font-weight: 800;
 }
-#dark .navbar a {
-  color: hsl(0, 0%, 100%);
-  font-weight: 800;
-}
-#light button {
-  background-color: hsl(0, 0%, 98%);
-  border: none;
+.navbar a:hover {
+  color: var(--text-primary);
 }
 button {
-  border: none;
-  transition: none;
+  background-color: var(--element) !important;
+  border: none !important;
 }
 
 .card-img-top {
@@ -58,4 +60,20 @@ button {
 ul {
   list-style: noen;
   list-style-type: none;
+}
+.card-title {
+  font-weight: 800;
+}
+.prop-card {
+  font-weight: 600;
+}
+.card {
+  height: 360px;
+  background-color: var(--element);
+  color: var(--text-primary);
+  border: none;
+  cursor: pointer;
+}
+li {
+  margin: 30px;
 }
