@@ -1,6 +1,7 @@
 import NavbarM from "./componnets/Navbar";
 import { createContext, useState } from "react";
 import CreateCard from "./componnets/Card";
+import Filter from "./componnets/Filter";
 
 export const ThemeContext = createContext(null);
 
@@ -53,6 +54,7 @@ function App() {
           isDarkTheme={isDarkTheme}
           theme={theme}
         />
+        <Filter theme={theme} isDarkTheme={isDarkTheme} />
         <CreateCard />
       </div>
     </ThemeContext.Provider>

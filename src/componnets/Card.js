@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 
 function CreateCard() {
@@ -31,10 +31,10 @@ function CreateCard() {
   }
   return countries ? (
     <section className="row main-section   m-auto w-100">
-      <ul className="d-flex justify-content-evenly flex-wrap  col-lg-12 col-xxl-9 col-xl-11 col-md-12  m-auto">
+      <div className="d-flex justify-content-evenly flex-wrap  col-lg-12 col-xxl-9 col-xl-11 col-md-12  m-auto">
         {countries.map((country, index) => {
           return (
-            <li key={index} onClick={clicked}>
+            <div className="card-container" key={index} onClick={clicked}>
               <Card style={{ width: "15rem" }} className="shadow">
                 <Card.Img
                   variant="top"
@@ -55,10 +55,10 @@ function CreateCard() {
                   </Card.Text>
                 </Card.Body>
               </Card>
-            </li>
+            </div>
           );
         })}
-      </ul>
+      </div>
     </section>
   ) : null;
 }
