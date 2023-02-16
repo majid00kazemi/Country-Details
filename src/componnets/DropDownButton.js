@@ -8,11 +8,13 @@ function DropDownButton({ theme, isDarkTheme }) {
         variant="secondary"
         menuVariant={isDarkTheme ? theme : undefined}
         id="dropdown-menu-align-center"
-        title="Dropdown Button"
+        title="Filter by Region"
       >
-        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+        <Dropdown.Item href="#/action-1">Africa</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">America</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Asia</Dropdown.Item>
+        <Dropdown.Item href="#/action-4">Europe</Dropdown.Item>
+        <Dropdown.Item href="#/action-5">Oceania</Dropdown.Item>
       </DropdownButton>
     </div>
   );
