@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 
-function CreateCard() {
+function CreateCard({ query }) {
   const [countries, setCountry] = useState(null);
 
   function compareStrings(a, b) {
@@ -24,6 +24,12 @@ function CreateCard() {
       })
       .catch((error) => console.log(error));
   }, []);
+
+  const filteredCountries = countries
+    ? countries.filter((country) =>
+        country.name.common.toLowerCase().includes(query.toLowerCase())
+      )
+    : [];
 
   function clicked() {
     console.log("clicked");
