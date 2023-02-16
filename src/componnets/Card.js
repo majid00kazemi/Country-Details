@@ -6,7 +6,6 @@ function CreateCard() {
   const [countries, setCountry] = useState(null);
 
   function compareStrings(a, b) {
-    // Assuming you want case-insensitive comparison
     a = a.toLowerCase();
     b = b.toLowerCase();
 
@@ -30,36 +29,34 @@ function CreateCard() {
     console.log("clicked");
   }
   return countries ? (
-    <section className="row main-section   m-auto w-100">
-      <div className="d-flex justify-content-evenly flex-wrap  col-lg-12 col-xxl-9 col-xl-11 col-md-12  m-auto">
-        {countries.map((country, index) => {
-          return (
-            <div className="card-container" key={index} onClick={clicked}>
-              <Card style={{ width: "15rem" }} className="shadow">
-                <Card.Img
-                  variant="top"
-                  src={country.flags.svg}
-                  alt={country.flags.alt}
-                />
-                <Card.Body>
-                  <Card.Title>{country.name.common}</Card.Title>
-                  <Card.Text>
-                    <span className="prop-card">Population:</span>{" "}
-                    {country.population}
-                    <br />
-                    <span className="prop-card">Region: </span>
-                    {country.region}
-                    <br />
-                    <span className="prop-card">Capital: </span>
-                    {country.capital}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </div>
-          );
-        })}
-      </div>
-    </section>
+    <Container className="d-flex justify-content-between flex-wrap">
+      {countries.map((country, index) => {
+        return (
+          <div className="card-container" key={index} onClick={clicked}>
+            <Card style={{ width: "18rem" }} className="shadow">
+              <Card.Img
+                variant="top"
+                src={country.flags.svg}
+                alt={country.flags.alt}
+              />
+              <Card.Body>
+                <Card.Title>{country.name.common}</Card.Title>
+                <Card.Text>
+                  <span className="prop-card">Population:</span>{" "}
+                  {country.population}
+                  <br />
+                  <span className="prop-card">Region: </span>
+                  {country.region}
+                  <br />
+                  <span className="prop-card">Capital: </span>
+                  {country.capital}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </div>
+        );
+      })}
+    </Container>
   ) : null;
 }
 export default CreateCard;
