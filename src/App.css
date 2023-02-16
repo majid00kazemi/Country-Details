@@ -75,6 +75,9 @@ button {
 .card-container:hover {
   box-shadow: 0 0.5rem 2rem var(--hover) !important;
 }
+.card-container:active {
+  box-shadow: 0 0.5rem 2rem var(--hover) !important;
+}
 #dropdown-menu-align-center {
   color: var(--text-primary);
   padding: 15px;
