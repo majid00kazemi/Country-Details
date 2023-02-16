@@ -17,6 +17,7 @@
 }
 
 * {
+  transition: background-color 0.5s;
   font-family: "Nunito Sans", sans-serif;
 }
 body {
@@ -29,7 +30,7 @@ body {
 
 .navbar {
   background-color: var(--element);
-  transition: 0.5s;
+
   padding-bottom: 10px;
 }
 .navbar button {
@@ -99,7 +100,6 @@ button {
   border: none;
 }
 .search-input {
-  width: 86%;
   background: var(--element) !important;
   outline: none;
   box-shadow: none;
@@ -115,4 +115,7 @@ button {
 .search-icon {
   margin-left: 20px;
   margin-right: 20px;
+}
+button {
+  transition: none !important;
 }

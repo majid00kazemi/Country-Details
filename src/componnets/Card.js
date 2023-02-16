@@ -25,12 +25,6 @@ function CreateCard({ query }) {
       .catch((error) => console.log(error));
   }, []);
 
-  const filteredCountries = countries
-    ? countries.filter((country) =>
-        country.name.common.toLowerCase().includes(query.toLowerCase())
-      )
-    : [];
-
   function clicked() {
     console.log("clicked");
   }

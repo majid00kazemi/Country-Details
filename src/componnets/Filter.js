@@ -3,14 +3,9 @@ import DropDownButton from "./DropDownButton";
 import SearchInput from "./SearchInput";
 
 function Filter({ theme, isDarkTheme }) {
-  const [query, setQuery] = useState("");
-
-  const handleQueryChange = (value) => {
-    setQuery(value);
-  };
   return (
     <Container className="filter-container d-flex justify-content-between align-items-center">
-      <SearchInput theme={theme} onQueryChange={handleQueryChange} />
+      <SearchInput theme={theme} />
       <DropDownButton
         theme={theme}
         isDarkTheme={isDarkTheme}
