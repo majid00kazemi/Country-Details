@@ -29,7 +29,7 @@ function CreateCard({ query }) {
     console.log("clicked");
   }
   return countries ? (
-    <Container className="d-flex justify-content-between flex-wrap">
+    <Container className="d-flex justify-content-around flex-wrap">
       {countries.map((country, index) => {
         return (
           <div className="card-container" key={index} onClick={clicked}>

@@ -88,12 +88,16 @@ button {
 .dropdown-menu {
   background-color: var(--element);
 }
+.drop-container {
+  margin-bottom: 20px;
+}
 
 .filter-container {
   margin-top: 120px;
 }
 .search-container {
-  width: 35%;
+  width: fit-content;
+  margin-bottom: 20px;
 }
 .search-bar {
   padding: 15px;
@@ -106,6 +110,7 @@ button {
   outline: none;
   box-shadow: none;
   border-color: transparent;
+  padding-right: 135px;
 }
 
 .search-input:focus,
