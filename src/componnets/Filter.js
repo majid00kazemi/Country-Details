@@ -4,7 +4,7 @@ import SearchInput from "./SearchInput";
 
 function Filter({ theme, isDarkTheme }) {
   return (
-    <Container className="filter-container d-flex justify-content-between align-items-center flex-wrap">
+    <Container className="filter-container  d-flex justify-content-between align-items-center flex-wrap">
       <SearchInput theme={theme} />
       <DropDownButton
         theme={theme}
