@@ -46,6 +46,8 @@ function App() {
     });
   };
 
+  const [country, setCountry] = useState();
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className="App" data-theme={theme}>
@@ -54,8 +56,12 @@ function App() {
           isDarkTheme={isDarkTheme}
           theme={theme}
         />
-        <Filter theme={theme} isDarkTheme={isDarkTheme} />
-        <CreateCard />
+        <Filter
+          theme={theme}
+          isDarkTheme={isDarkTheme}
+          setCountry={setCountry}
+        />
+        <CreateCard country={country} />
       </div>
     </ThemeContext.Provider>
   );

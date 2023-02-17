@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 
-function CreateCard({ query }) {
+function CreateCard({ country }) {
   const [countries, setCountry] = useState(null);
 
   function compareStrings(a, b) {
@@ -11,7 +11,6 @@ function CreateCard({ query }) {
 
     return a < b ? -1 : a > b ? 1 : 0;
   }
-
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all/")
       .then((res) => res.json())
@@ -42,7 +41,7 @@ function CreateCard({ query }) {
               <Card.Body>
                 <Card.Title>{country.name.common}</Card.Title>
                 <Card.Text>
-                  <span className="prop-card">Population:</span>{" "}
+                  <span className="prop-card">Population: </span>
                   {country.population}
                   <br />
                   <span className="prop-card">Region: </span>

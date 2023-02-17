@@ -1,11 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-function SearchInput({ theme, onQueryChange }) {
+function SearchInput({ theme, setCountry }) {
   const iconColor = theme === "light" ? "gray" : "white";
-  const handleQueryChange = (event) => {
-    onQueryChange(event.target.value);
-  };
+
+  function handleSearch(e) {
+    setCountry(e.target.value);
+  }
+
   return (
     <div className="shadow rounded search-container">
       <div className={`search-bar rounded bg-${theme}`}>
@@ -18,7 +20,7 @@ function SearchInput({ theme, onQueryChange }) {
           className="search-input"
           type="text"
           placeholder="Search for a country..."
-          onChange={handleQueryChange}
+          onChange={handleSearch}
         />
       </div>
     </div>
