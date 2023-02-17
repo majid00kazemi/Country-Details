@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 
 function CreateCard({ country }) {
   const [countries, setCountry] = useState(null);
-
+  console.log(country);
   function compareStrings(a, b) {
     a = a.toLowerCase();
     b = b.toLowerCase();
