@@ -1,32 +1,11 @@
-import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 
-function CreateCard({ country }) {
-  const [countries, setCountry] = useState(null);
-  console.log(country);
-  function compareStrings(a, b) {
-    a = a.toLowerCase();
-    b = b.toLowerCase();
-
-    return a < b ? -1 : a > b ? 1 : 0;
-  }
-  useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all/")
-      .then((res) => res.json())
-      .then((data) => {
-        data.sort((a, b) => {
-          return compareStrings(a.name.common, b.name.common);
-        });
-
-        setCountry(data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
+function CreateCard({ countries }) {
   function clicked() {
     console.log("clicked");
   }
+
   return countries ? (
     <Container className="d-flex justify-content-around flex-wrap">
       {countries.map((country, index) => {

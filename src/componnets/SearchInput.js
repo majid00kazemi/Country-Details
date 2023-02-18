@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-function SearchInput({ theme, setCountry }) {
+function SearchInput({ theme, setQuery }) {
   const iconColor = theme === "light" ? "gray" : "white";
 
   function handleSearch(e) {
-    setCountry(e.target.value);
+    setQuery(e.target.value);
   }
 
   return (

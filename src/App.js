@@ -1,11 +1,47 @@
 import NavbarM from "./componnets/Navbar";
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import CreateCard from "./componnets/Card";
 import Filter from "./componnets/Filter";
 
 export const ThemeContext = createContext(null);
 
+function compareStrings(a, b) {
+  a = a.toLowerCase();
+  b = b.toLowerCase();
+
+  return a < b ? -1 : a > b ? 1 : 0;
+}
+
+function filterCountriesByName(countries, query) {
+  if (!query) {
+    return countries;
+  }
+
+  return countries.filter((country) =>
+    country.name.common.toLowerCase().includes(query.toLowerCase())
+  );
+}
+
 function App() {
+  const [countries, setCountries] = useState();
+
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all/")
+      .then((res) => res.json())
+      .then((data) => {
+        data.sort((a, b) => {
+          return compareStrings(a.name.common, b.name.common);
+        });
+
+        setCountries(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const [query, setQuery] = useState();
+
+  const filteredCountries = filterCountriesByName(countries, query);
+
   const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
   const detectSystemTheme = () => {
     if (darkThemeMq.matches) {
@@ -46,8 +82,6 @@ function App() {
     });
   };
 
-  const [country, setCountry] = useState();
-
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className="App" data-theme={theme}>
@@ -56,12 +90,8 @@ function App() {
           isDarkTheme={isDarkTheme}
           theme={theme}
         />
-        <Filter
-          theme={theme}
-          isDarkTheme={isDarkTheme}
-          setCountry={setCountry}
-        />
-        <CreateCard country={country} />
+        <Filter theme={theme} isDarkTheme={isDarkTheme} setQuery={setQuery} />
+        <CreateCard countries={filteredCountries} />
       </div>
     </ThemeContext.Provider>
   );
