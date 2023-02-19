@@ -26,9 +26,10 @@ function RegionPage({ isDarkTheme, theme }) {
         });
 
         setCountries(data);
+        setActiveName(params.region)
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [params.region]);
 
   const [query, setQuery] = useState();
 
@@ -42,10 +43,6 @@ function RegionPage({ isDarkTheme, theme }) {
     );
   }
 
-  function handelActive() {
-    setActiveName(params.region);
-  }
-  console.log(activeName);
   const filteredCountries = filterCountriesByName(countries, query);
   return (
     <>

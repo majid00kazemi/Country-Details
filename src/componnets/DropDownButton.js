@@ -2,7 +2,6 @@ import React from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 
 function DropDownButton({ theme, isDarkTheme, activeName }) {
-  console.log(activeName);
   return (
     <div className="shadow drop-container">
       <DropdownButton
