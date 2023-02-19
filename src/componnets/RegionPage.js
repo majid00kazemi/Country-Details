@@ -15,6 +15,8 @@ function RegionPage({ isDarkTheme, theme }) {
 
   const params = useParams();
 
+  const [activeName, setActiveName] = useState(params.region);
+
   useEffect(() => {
     fetch(`https://restcountries.com/v3.1/region/${params.region}`)
       .then((res) => res.json())
@@ -40,10 +42,19 @@ function RegionPage({ isDarkTheme, theme }) {
     );
   }
 
+  function handelActive() {
+    setActiveName(params.region);
+  }
+  console.log(activeName);
   const filteredCountries = filterCountriesByName(countries, query);
   return (
     <>
-      <Filter theme={theme} isDarkTheme={isDarkTheme} setQuery={setQuery} />
+      <Filter
+        theme={theme}
+        isDarkTheme={isDarkTheme}
+        setQuery={setQuery}
+        activeName={activeName}
+      />
       <CreateCard countries={filteredCountries} />
     </>
   );
