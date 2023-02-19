@@ -3,7 +3,7 @@ import { DropdownButton, Dropdown } from "react-bootstrap";
 
 function DropDownButton({ theme, isDarkTheme, activeName }) {
   return (
-    <div className="shadow drop-container">
+    <div className="shadow drop-container rounded">
       <DropdownButton
         variant="secondary"
         menuVariant={isDarkTheme ? theme : undefined}
