@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CreateCard from "./Card";
 import Filter from "./Filter";
@@ -17,7 +17,14 @@ function RegionPage({ isDarkTheme, theme }) {
 
   const [activeName, setActiveName] = useState(params.region);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
+    const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
+
+    if (!regions.includes(params.region)) {
+      return navigate("/404");
+    }
     fetch(`https://restcountries.com/v3.1/region/${params.region}`)
       .then((res) => res.json())
       .then((data) => {
@@ -26,10 +33,10 @@ function RegionPage({ isDarkTheme, theme }) {
         });
 
         setCountries(data);
-        setActiveName(params.region)
+        setActiveName(params.region);
       })
       .catch((error) => console.log(error));
-  }, [params.region]);
+  }, [params.region, navigate]);
 
   const [query, setQuery] = useState();
 
@@ -44,6 +51,7 @@ function RegionPage({ isDarkTheme, theme }) {
   }
 
   const filteredCountries = filterCountriesByName(countries, query);
+
   return (
     <>
       <Filter
