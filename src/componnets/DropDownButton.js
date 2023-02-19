@@ -10,6 +10,7 @@ function DropDownButton({ theme, isDarkTheme }) {
         id="dropdown-menu-align-center"
         title="Filter by Region"
       >
+        <Dropdown.Item href="/">None</Dropdown.Item>
         <Dropdown.Item href="/Africa">Africa</Dropdown.Item>
         <Dropdown.Item href="/America">America</Dropdown.Item>
         <Dropdown.Item href="/Asia">Asia</Dropdown.Item>
