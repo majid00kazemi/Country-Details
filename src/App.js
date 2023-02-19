@@ -1,7 +1,8 @@
 import NavbarM from "./componnets/Navbar";
 import { createContext, useState, useEffect } from "react";
-import CreateCard from "./componnets/Card";
-import Filter from "./componnets/Filter";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./componnets/HomePage";
+import RegionPage from "./componnets/RegionPage";
 
 export const ThemeContext = createContext(null);
 
@@ -10,16 +11,6 @@ function compareStrings(a, b) {
   b = b.toLowerCase();
 
   return a < b ? -1 : a > b ? 1 : 0;
-}
-
-function filterCountriesByName(countries, query) {
-  if (!query) {
-    return countries;
-  }
-
-  return countries.filter((country) =>
-    country.name.common.toLowerCase().includes(query.toLowerCase())
-  );
 }
 
 function App() {
@@ -40,6 +31,16 @@ function App() {
 
   const [query, setQuery] = useState();
 
+  function filterCountriesByName(countries, query) {
+    if (!query) {
+      return countries;
+    }
+
+    return countries.filter((country) =>
+      country.name.common.toLowerCase().includes(query.toLowerCase())
+    );
+  }
+
   const filteredCountries = filterCountriesByName(countries, query);
 
   const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
@@ -57,6 +58,7 @@ function App() {
     document.documentElement.setAttribute("data-theme", saved);
     return saved || detectSystemTheme();
   });
+
   const isDarkTheme = theme === "dark";
 
   darkThemeMq.addListener((e) => {
@@ -81,7 +83,6 @@ function App() {
       return current === "light" ? "dark" : "light";
     });
   };
-
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className="App" data-theme={theme}>
@@ -90,8 +91,22 @@ function App() {
           isDarkTheme={isDarkTheme}
           theme={theme}
         />
-        <Filter theme={theme} isDarkTheme={isDarkTheme} setQuery={setQuery} />
-        <CreateCard countries={filteredCountries} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                theme={theme}
+                isDarkTheme={isDarkTheme}
+                setQuery={setQuery}
+                filteredCountries={filteredCountries}
+                query={query}
+              />
+            }
+          />
+
+          <Route path="/:region" element={<RegionPage theme={theme} isDarkTheme={isDarkTheme} />} />
+        </Routes>
       </div>
     </ThemeContext.Provider>
   );

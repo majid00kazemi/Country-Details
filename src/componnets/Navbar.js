@@ -22,7 +22,7 @@ function NavbarM({ toggleTheme, isDarkTheme, theme }) {
   return (
     <Navbar className="navbar fixed-top shadow">
       <Container className="navbar-container">
-        <Navbar.Brand href="#">Where in the world?</Navbar.Brand>
+        <Navbar.Brand href="/">Where in the world?</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
@@ -34,12 +34,7 @@ function NavbarM({ toggleTheme, isDarkTheme, theme }) {
                   <FontAwesomeIcon icon={faMoonReg} />
                 )}
               </i>
-              {isDarkTheme ? (
-                  `Light Mode`
-                ) : (
-                  `Dark Mode`
-                )}
-              
+              {isDarkTheme ? `Light Mode` : `Dark Mode`}
             </Button>{" "}
           </Navbar.Text>
         </Navbar.Collapse>
