@@ -18,15 +18,15 @@ function CountryPage() {
           </section>
           <section className="m-auto">
             <h2>Belguim</h2>
-            <section className="row d-flex flex-wrap country-details-section ">
-              <section className="col-6">
+            <section className=" d-flex flex-wrap country-details-section flex-row">
+              <section className="">
                 <p>Native Name: Belgie </p>
                 <p>Populaton: 111.324234.1234</p>
                 <p>Region: Europe</p>
                 <p>Sub Region: Western Europe</p>
                 <p>Capital: Brussels</p>
               </section>
-              <section className="col-6">
+              <section className="">
                 <p>Top Level Domain: .be</p>
                 <p>Currencies: Euro</p>
                 <p>Language: Dutch, French, German</p>
