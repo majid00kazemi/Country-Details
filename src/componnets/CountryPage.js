@@ -26,7 +26,7 @@ function CountryPage() {
                 <p>Sub Region: Western Europe</p>
                 <p>Capital: Brussels</p>
               </section>
-              <section className="">
+              <section className="me-auto">
                 <p>Top Level Domain: .be</p>
                 <p>Currencies: Euro</p>
                 <p>Language: Dutch, French, German</p>
