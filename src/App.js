@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./componnets/HomePage";
 import RegionPage from "./componnets/RegionPage";
 import NotFound from "./componnets/NotFound";
+import CountryPage from "./componnets/CountryPage";
 
 export const ThemeContext = createContext(null);
 
@@ -108,14 +109,9 @@ function App() {
 
           <Route
             path="/:region"
-            element={
-              <RegionPage
-                theme={theme}
-                isDarkTheme={isDarkTheme}
-                errorElement={<NotFound />}
-              />
-            }
+            element={<RegionPage theme={theme} isDarkTheme={isDarkTheme} />}
           />
+          <Route path="/country/:country" element={<CountryPage />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/404" element={<NotFound />} />
         </Routes>

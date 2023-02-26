@@ -125,3 +125,28 @@ button {
 button {
   transition: none !important;
 }
+.country-page-section {
+  margin-top: 150px;
+  color: var(--text-primary);
+}
+.country-page-button-back {
+  padding-left: 35px;
+  padding-right: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: var(--element) !important;
+  color: var(--text-primary);
+}
+.country-details-container {
+  margin-top: 70px;
+}
+.country-details-section {
+  margin-top: 40px;
+}
+.back-icon {
+  margin-right: 5px;
+}
+.country-image {
+  width: 600px;
+  height: 400px;
+}
