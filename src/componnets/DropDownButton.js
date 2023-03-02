@@ -1,7 +1,9 @@
 import React from "react";
-import { DropdownButton, Dropdown } from "react-bootstrap";
+import { DropdownButton } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function DropDownButton({ theme, isDarkTheme, activeName }) {
+  console.log(activeName);
   return (
     <div className="shadow drop-container rounded">
       <DropdownButton
@@ -10,24 +12,65 @@ function DropDownButton({ theme, isDarkTheme, activeName }) {
         id="dropdown-menu-align-center"
         title={activeName ? activeName : "Filter by Region"}
       >
-        <Dropdown.Item href="/" active={activeName === undefined}>
-          All
-        </Dropdown.Item>
-        <Dropdown.Item href="/Africa" active={activeName === "Africa"}>
-          Africa
-        </Dropdown.Item>
-        <Dropdown.Item href="/America" active={activeName === "America"}>
-          America
-        </Dropdown.Item>
-        <Dropdown.Item href="/Asia" active={activeName === "Asia"}>
-          Asia
-        </Dropdown.Item>
-        <Dropdown.Item href="/Europe" active={activeName === "Europe"}>
-          Europe
-        </Dropdown.Item>
-        <Dropdown.Item href="/Oceania" active={activeName === "Oceania"}>
-          Oceania
-        </Dropdown.Item>
+        <Link to={"/"}>
+          <div
+            className={`dropdown-item ${
+              activeName === undefined ? "active" : null
+            } `}
+          >
+            All
+          </div>
+        </Link>
+
+        <Link to={"/Africa"}>
+          <div
+            className={`dropdown-item ${
+              activeName === "Africa" ? "active" : null
+            } `}
+          >
+            Africa
+          </div>
+        </Link>
+
+        <Link to={"/America"}>
+          <div
+            className={`dropdown-item ${
+              activeName === "America" ? "active" : null
+            } `}
+          >
+            America
+          </div>
+        </Link>
+
+        <Link to={"/Asia"}>
+          <div
+            className={`dropdown-item ${
+              activeName === "Asia" ? "active" : null
+            } `}
+          >
+            Asia
+          </div>
+        </Link>
+
+        <Link to={"/Europe"}>
+          <div
+            className={`dropdown-item ${
+              activeName === "Europe" ? "active" : null
+            } `}
+          >
+            Europe
+          </div>
+        </Link>
+
+        <Link to={"/Oceania"}>
+          <div
+            className={`dropdown-item ${
+              activeName === "Oceania" ? "active" : null
+            } `}
+          >
+            Oceania
+          </div>
+        </Link>
       </DropdownButton>
     </div>
   );
