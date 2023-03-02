@@ -9,17 +9,17 @@ import { useEffect, useState } from "react";
 function CountryPage() {
   const param = useParams();
 
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
   useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/name/${param.country}`)
+    fetch(`https://restcountries.com/v3.1/name/${param.country}?fullText=true`)
       .then((res) => res.json())
       .then((data) => {
-        setData(data);
+        setData(data[0]);
       })
       .catch((error) => console.log(error));
   }, []);
 
-  return (
+  return data ? (
     <>
       <section className="country-page-section container">
         <Link to={"/"}>
@@ -31,32 +31,42 @@ function CountryPage() {
         <section className="d-flex flex-wrap country-details-container">
           <section className="">
             <img
-              alt="Belguim"
-              src="https://flagcdn.com/be.svg"
+              alt={data.name.common}
+              src={data.flags.svg}
               className="country-image"
             />
           </section>
           <section className="m-auto mt-4">
-            <h2>Belguim</h2>
+            <h2>{data.name.common}</h2>
             <section className=" d-flex flex-wrap country-details-section flex-row">
               <section className="me-4">
-                <p>Native Name: Belgie </p>
-                <p>Populaton: 111.324234.1234</p>
-                <p>Region: Europe</p>
-                <p>Sub Region: Western Europe</p>
-                <p>Capital: Brussels</p>
+                <p>Native Name: {data.altSpellings[1]} </p>
+                <p>Populaton: {data.population}</p>
+                <p>Region: {data.region}</p>
+                <p>Sub Region: {data.subregion}</p>
+                <p>Capital: {data.capital}</p>
               </section>
               <section className="me-auto">
-                <p>Top Level Domain: .be</p>
-                <p>Currencies: Euro</p>
-                <p>Language: Dutch, French, German</p>
+                <p>Top Level Domain: {data.tld[0]}</p>
+                <p>
+                  Currencies:
+                  {Object.values(data.currencies)
+                    .map((currency) => currency.name)
+                    .join(", ")}
+                </p>
+                <p>
+                  Language:{" "}
+                  {Object.values(data.languages)
+                    .map((language) => language)
+                    .join(", ")}
+                </p>
               </section>
             </section>
           </section>
         </section>
       </section>
     </>
-  );
+  ) : null;
 }
 
 export default CountryPage;
