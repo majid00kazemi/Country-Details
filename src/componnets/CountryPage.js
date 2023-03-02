@@ -14,7 +14,11 @@ function CountryPage() {
 
         <section className="d-flex flex-wrap country-details-container">
           <section className="">
-            <img src="https://flagcdn.com/be.svg" className="country-image" />
+            <img
+              alt="Belguim"
+              src="https://flagcdn.com/be.svg"
+              className="country-image"
+            />
           </section>
           <section className="m-auto">
             <h2>Belguim</h2>
