@@ -2,6 +2,7 @@ import { Container, Navbar, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon as faMoonSo } from "@fortawesome/free-solid-svg-icons";
 import { faMoon as faMoonReg } from "@fortawesome/free-regular-svg-icons";
+import { Link } from "react-router-dom";
 
 function NavbarM({ toggleTheme, isDarkTheme, theme }) {
   function changeTheme() {
@@ -22,7 +23,9 @@ function NavbarM({ toggleTheme, isDarkTheme, theme }) {
   return (
     <Navbar className="navbar fixed-top shadow">
       <Container className="navbar-container">
-        <Navbar.Brand href="/">Where in the world?</Navbar.Brand>
+        <Link to={"/"}>
+          <Navbar.Brand>Where in the world?</Navbar.Brand>
+        </Link>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>

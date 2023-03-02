@@ -3,14 +3,17 @@
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function CountryPage() {
   return (
     <>
       <section className="country-page-section container">
-        <Button className="country-page-button-back shadow">
-          <FontAwesomeIcon className="back-icon" icon={faArrowLeft} /> Back
-        </Button>
+        <Link to={"/"}>
+          <Button className="country-page-button-back shadow">
+            <FontAwesomeIcon className="back-icon" icon={faArrowLeft} /> Back
+          </Button>
+        </Link>
 
         <section className="d-flex flex-wrap country-details-container">
           <section className="">
@@ -20,10 +23,10 @@ function CountryPage() {
               className="country-image"
             />
           </section>
-          <section className="m-auto">
+          <section className="m-auto mt-4">
             <h2>Belguim</h2>
             <section className=" d-flex flex-wrap country-details-section flex-row">
-              <section className="">
+              <section className="me-4">
                 <p>Native Name: Belgie </p>
                 <p>Populaton: 111.324234.1234</p>
                 <p>Region: Europe</p>

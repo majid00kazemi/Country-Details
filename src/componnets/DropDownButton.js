@@ -3,7 +3,6 @@ import { DropdownButton } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function DropDownButton({ theme, isDarkTheme, activeName }) {
-  console.log(activeName);
   return (
     <div className="shadow drop-container rounded">
       <DropdownButton
@@ -12,10 +11,10 @@ function DropDownButton({ theme, isDarkTheme, activeName }) {
         id="dropdown-menu-align-center"
         title={activeName ? activeName : "Filter by Region"}
       >
-        <Link to={"/"}>
+        <Link to={"/All"}>
           <div
             className={`dropdown-item ${
-              activeName === undefined ? "active" : null
+              activeName === "All" ? "active" : null
             } `}
           >
             All

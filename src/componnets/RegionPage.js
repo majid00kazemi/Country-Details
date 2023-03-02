@@ -20,22 +20,36 @@ function RegionPage({ isDarkTheme, theme }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
+    const regions = ["Africa", "America", "Asia", "Europe", "Oceania", "All"];
 
     if (!regions.includes(params.region)) {
       return navigate("/404");
     }
-    fetch(`https://restcountries.com/v3.1/region/${params.region}`)
-      .then((res) => res.json())
-      .then((data) => {
-        data.sort((a, b) => {
-          return compareStrings(a.name.common, b.name.common);
-        });
+    if (params.region === "All") {
+      fetch(`https://restcountries.com/v3.1/all/`)
+        .then((res) => res.json())
+        .then((data) => {
+          data.sort((a, b) => {
+            return compareStrings(a.name.common, b.name.common);
+          });
 
-        setCountries(data);
-        setActiveName(params.region);
-      })
-      .catch((error) => console.log(error));
+          setCountries(data);
+          setActiveName(params.region);
+        })
+        .catch((error) => console.log(error));
+    } else {
+      fetch(`https://restcountries.com/v3.1/region/${params.region}`)
+        .then((res) => res.json())
+        .then((data) => {
+          data.sort((a, b) => {
+            return compareStrings(a.name.common, b.name.common);
+          });
+
+          setCountries(data);
+          setActiveName(params.region);
+        })
+        .catch((error) => console.log(error));
+    }
   }, [params.region, navigate]);
 
   const [query, setQuery] = useState();
