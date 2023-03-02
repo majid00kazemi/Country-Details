@@ -1,5 +1,5 @@
 import React from "react";
-import { DropdownButton } from "react-bootstrap";
+import { DropdownButton, Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function DropDownButton({ theme, isDarkTheme, activeName }) {

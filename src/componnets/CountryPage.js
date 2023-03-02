@@ -1,11 +1,24 @@
-// import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 // import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function CountryPage() {
+  const param = useParams();
+
+  const [data, setData] = useState();
+  useEffect(() => {
+    fetch(`https://restcountries.com/v3.1/name/${param.country}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <>
       <section className="country-page-section container">
