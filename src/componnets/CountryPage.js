@@ -17,7 +17,7 @@ function CountryPage() {
         setData(data[0]);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [param.country]);
 
   return data ? (
     <>
