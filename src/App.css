@@ -150,12 +150,39 @@ button {
   margin-right: 5px;
 }
 .country-image {
-  width: 25rem;
-  height: 20rem;
+  width: 520px;
+  height: 400px;
 }
 a {
   text-decoration: none;
 }
 .navbar-brand {
   color: var(--text-primary) !important;
+}
+.border-button {
+  color: var(--text-primary);
+  background-color: var(--background);
+  margin-left: 10px;
+  margin-top: 5px;
+  padding: 3px 24px 3px 24px;
+}
+.border-button:hover {
+  color: var(--text-primary);
+}
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: var(--text-primary);
+}
+.not-found-button {
+  color: var(--text-primary);
+  background-color: var(--background);
+  padding: 15px;
+  font-size: 1.1rem;
+}
+.not-found-button:hover {
+  color: var(--text-primary);
 }

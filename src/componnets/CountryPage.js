@@ -1,23 +1,27 @@
-import { useParams } from "react-router-dom";
-// import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function CountryPage() {
+function CountryPage(props) {
   const param = useParams();
-
+  const navigate = useNavigate();
   const [data, setData] = useState(null);
   useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/name/${param.country}?fullText=true`)
+    fetch(`https://restcountries.com/v3.1/alpha/${param.country}`)
       .then((res) => res.json())
       .then((data) => {
-        setData(data[0]);
+        if (data.status === 400) {
+          navigate("/404");
+        } else setData(data[0]);
       })
-      .catch((error) => console.log(error));
-  }, [param.country]);
+      .catch((error) => {
+        console.log(error);
+        navigate("/404");
+      });
+  }, [param.country, navigate]);
 
   return data ? (
     <>
@@ -29,7 +33,7 @@ function CountryPage() {
         </Link>
 
         <section className="d-flex flex-wrap country-details-container">
-          <section className="">
+          <section className="m-auto">
             <img
               alt={data.name.common}
               src={data.flags.svg}
@@ -61,6 +65,16 @@ function CountryPage() {
                     .join(", ")}
                 </p>
               </section>
+            </section>
+            <section className="mt-4">
+              Border Countries:
+              {Object.values(data.borders).map((border) => {
+                return (
+                  <Link to={`/country/${border}`} key={border}>
+                    <Button className="border-button shadow">{border}</Button>
+                  </Link>
+                );
+              })}
             </section>
           </section>
         </section>
