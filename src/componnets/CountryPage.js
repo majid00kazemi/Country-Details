@@ -5,10 +5,11 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function CountryPage(props) {
+function CountryPage() {
   const param = useParams();
   const navigate = useNavigate();
   const [data, setData] = useState(null);
+
   useEffect(() => {
     fetch(`https://restcountries.com/v3.1/alpha/${param.country}`)
       .then((res) => res.json())
