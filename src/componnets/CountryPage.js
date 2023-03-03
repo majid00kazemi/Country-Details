@@ -36,47 +36,55 @@ function CountryPage() {
         <section className="d-flex flex-wrap country-details-container">
           <section className="m-auto">
             <img
-              alt={data.name.common}
-              src={data.flags.svg}
+              alt={data.name?.common}
+              src={data.flags?.svg}
               className="country-image"
             />
           </section>
           <section className="m-auto mt-4">
-            <h2>{data.name.common}</h2>
+            <h2>{data.name?.common}</h2>
             <section className=" d-flex flex-wrap country-details-section flex-row">
               <section className="me-4">
-                <p>Native Name: {data.altSpellings[1]} </p>
-                <p>Populaton: {data.population}</p>
-                <p>Region: {data.region}</p>
-                <p>Sub Region: {data.subregion}</p>
-                <p>Capital: {data.capital}</p>
+                {data.altSpellings?.[1] && (
+                  <p>Native Name: {data.altSpellings[1]} </p>
+                )}
+                {data.population && <p>Populaton: {data.population}</p>}
+                {data.region && <p>Region: {data.region}</p>}
+                {data.subregion && <p>Sub Region: {data.subregion}</p>}
+                {data.capital && <p>Capital: {data.capital}</p>}
               </section>
               <section className="me-auto">
-                <p>Top Level Domain: {data.tld[0]}</p>
-                <p>
-                  Currencies:
-                  {Object.values(data.currencies)
-                    .map((currency) => currency.name)
-                    .join(", ")}
-                </p>
-                <p>
-                  Language:{" "}
-                  {Object.values(data.languages)
-                    .map((language) => language)
-                    .join(", ")}
-                </p>
+                {data.tld?.[0] && <p>Top Level Domain: {data.tld[0]}</p>}
+                {data.currencies && (
+                  <p>
+                    Currencies:
+                    {Object.values(data.currencies)
+                      .map((currency) => currency?.name)
+                      .join(", ")}
+                  </p>
+                )}
+                {data.languages && (
+                  <p>
+                    Language:{" "}
+                    {Object.values(data.languages)
+                      .map((language) => language)
+                      .join(", ")}
+                  </p>
+                )}
               </section>
             </section>
-            <section className="mt-4">
-              Border Countries:
-              {Object.values(data.borders).map((border) => {
-                return (
-                  <Link to={`/country/${border}`} key={border}>
-                    <Button className="border-button shadow">{border}</Button>
-                  </Link>
-                );
-              })}
-            </section>
+            {data.borders && data.borders.length > 0 && (
+              <section className="mt-4">
+                Border Countries:
+                {data.borders.map((border) => {
+                  return (
+                    <Link to={`/country/${border}`} key={border}>
+                      <Button className="border-button shadow">{border}</Button>
+                    </Link>
+                  );
+                })}
+              </section>
+            )}
           </section>
         </section>
       </section>
